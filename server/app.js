@@ -19,10 +19,9 @@ const setHeaders = (req, res, next) => {
 app.use(setHeaders)
 
 const BASE_PATH = process.env.BASE_URL
-const REGEXP_BASE_PATH = new RegExp(BASE_PATH)
+const REGEXP_BASE_PATH = new RegExp(`^${BASE_PATH}`)
 
 const buildPath = (originalPath) => {
-  console.log(originalPath)
   if (REGEXP_BASE_PATH.test(originalPath) === true) {
     return originalPath
   }
@@ -35,7 +34,7 @@ const nuxt = new Nuxt(config)
 
 app.use((req, res, next) => {
   req.url = buildPath(req.url)
-  console.log(req.url)
+  console.log('Request URL: ', req.url)
 
   nuxt.render(req, res, next)
 })

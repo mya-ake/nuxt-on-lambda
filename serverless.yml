@@ -1,6 +1,8 @@
 service:
   name: ${self:custom.NAME}
 
+frameworkVersion: ">=1.23.0"
+
 provider:
   name: aws
   runtime: nodejs6.10
@@ -12,6 +14,7 @@ custom:
   NAME: nuxt-on-lambda
   STAGE: ${file(./configs/env.js):exporter.STAGE}
   BASE_URL: ${file(./configs/env.js):exporter.BASE_URL}
+  ENDPOINT_ENV: ${file(./configs/env.js):exporter.ENDPOINT_ENV}
 
 package:
   excludeDevDependencies: true
@@ -46,6 +49,7 @@ functions:
     memorySize: 128
     environment:
       BASE_URL: ${self:custom.BASE_URL}
+      ENDPOINT_ENV: ${self:custom.ENDPOINT_ENV}
     events:
       - http:
           path: '/'
