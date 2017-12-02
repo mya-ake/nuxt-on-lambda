@@ -1,6 +1,8 @@
 'use strict'
 
+const { Nuxt } = require('nuxt')
 const express = require('express')
+const config = require('./../nuxt.config.js')
 
 const app = express()
 
@@ -16,10 +18,26 @@ const setHeaders = (req, res, next) => {
 
 app.use(setHeaders)
 
-app.get('/*', (req, res) => {
-  res.json({
-    test: 'test'
-  })
+const BASE_PATH = process.env.BASE_URL
+const REGEXP_BASE_PATH = new RegExp(BASE_PATH)
+
+const buildPath = (originalPath) => {
+  console.log(originalPath)
+  if (REGEXP_BASE_PATH.test(originalPath) === true) {
+    return originalPath
+  }
+  const basePath = BASE_PATH.replace(/\/$/, '')
+  return `${basePath}${originalPath}`
+}
+
+config.dev = false
+const nuxt = new Nuxt(config)
+
+app.use((req, res, next) => {
+  req.url = buildPath(req.url)
+  console.log(req.url)
+
+  nuxt.render(req, res, next)
 })
 
 module.exports.app = app

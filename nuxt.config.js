@@ -1,5 +1,17 @@
+'use strict'
+
+const { ENV } = require('./configs/env')
+
 module.exports = {
   srcDir: 'app',
+
+  router: {
+    base: ENV.BASE_URL
+  },
+
+  render: {
+    gzip: false
+  },
 
   /*
   ** Headers of the page

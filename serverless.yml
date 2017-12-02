@@ -1,14 +1,17 @@
 service:
-  name: ${self:custom.name}
+  name: ${self:custom.NAME}
 
 provider:
   name: aws
   runtime: nodejs6.10
   region: ap-northeast-1
+  stage: ${self:custom.STAGE}
   profile: my
 
 custom:
-  name: nuxt-on-lambda
+  NAME: nuxt-on-lambda
+  STAGE: ${file(./configs/env.js):exporter.STAGE}
+  BASE_URL: ${file(./configs/env.js):exporter.BASE_URL}
 
 package:
   excludeDevDependencies: true
@@ -41,6 +44,8 @@ functions:
     handler: server/handler.handler
     timeout: 30
     memorySize: 128
+    environment:
+      BASE_URL: ${self:custom.BASE_URL}
     events:
       - http:
           path: '/'
