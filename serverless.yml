@@ -22,6 +22,7 @@ package:
   exclude:
     - .**
     - .**/*
+    - app/**
     - LICENSE
     - README.md
     - package.json
