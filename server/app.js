@@ -3,6 +3,7 @@
 const { Nuxt } = require('nuxt')
 const express = require('express')
 const config = require('./../nuxt.config.js')
+config.dev = false
 
 const app = express()
 
@@ -20,16 +21,14 @@ app.use(setHeaders)
 
 const BASE_URL = process.env.BASE_URL
 const REGEXP_BASE_URL = new RegExp(`^${BASE_URL}`)
-
+const BASE_URL_TO_BE_ADDED = BASE_URL.replace(/\/$/, '')
 const buildPath = (originalPath) => {
   if (REGEXP_BASE_URL.test(originalPath) === true) {
     return originalPath
   }
-  const baseUrl = BASE_URL.replace(/\/$/, '')
-  return `${baseUrl}${originalPath}`
+  return `${BASE_URL_TO_BE_ADDED}${originalPath}`
 }
 
-config.dev = false
 const nuxt = new Nuxt(config)
 
 app.use((req, res, next) => {
