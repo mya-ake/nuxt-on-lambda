@@ -13,7 +13,7 @@ provider:
 custom:
   NAME: nuxt-on-lambda
   STAGE: ${file(./configs/env.js):exporter.STAGE}
-  BASE_PATH: ${file(./configs/env.js):exporter.BASE_PATH}
+  BASE_URL: ${file(./configs/env.js):exporter.BASE_URL}
   ENDPOINT_ENV: ${file(./configs/env.js):exporter.ENDPOINT_ENV}
 
 # 少しでもデプロイのパッケージファイルを少なくする
@@ -52,7 +52,7 @@ functions:
     timeout: 30
     memorySize: 128
     environment:
-      BASE_PATH: ${self:custom.BASE_PATH}
+      BASE_URL: ${self:custom.BASE_URL}
       ENDPOINT_ENV: ${self:custom.ENDPOINT_ENV}
     events:
       - http:

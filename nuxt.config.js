@@ -6,7 +6,7 @@ module.exports = {
   srcDir: 'app',
 
   router: {
-    base: ENV.BASE_PATH
+    base: ENV.BASE_URL
   },
 
   render: {

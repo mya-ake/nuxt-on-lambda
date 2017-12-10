@@ -18,15 +18,15 @@ const setHeaders = (req, res, next) => {
 
 app.use(setHeaders)
 
-const BASE_PATH = process.env.BASE_PATH
-const REGEXP_BASE_PATH = new RegExp(`^${BASE_PATH}`)
+const BASE_URL = process.env.BASE_URL
+const REGEXP_BASE_URL = new RegExp(`^${BASE_URL}`)
 
 const buildPath = (originalPath) => {
-  if (REGEXP_BASE_PATH.test(originalPath) === true) {
+  if (REGEXP_BASE_URL.test(originalPath) === true) {
     return originalPath
   }
-  const basePath = BASE_PATH.replace(/\/$/, '')
-  return `${basePath}${originalPath}`
+  const baseUrl = BASE_URL.replace(/\/$/, '')
+  return `${baseUrl}${originalPath}`
 }
 
 config.dev = false
