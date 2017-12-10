@@ -4,12 +4,12 @@ const endpointEnv = process.env.ENDPOINT_ENV || 'cf'
 
 const ENV = {
   STAGE: 'dev',
-  BASE_URL: '/',
+  BASE_PATH: '/',
   ENDPOINT_ENV: endpointEnv
 }
 
 if (endpointEnv === 'api_gw') {
-  ENV.BASE_URL = `/${ENV.STAGE}/`
+  ENV.BASE_PATH = `/${ENV.STAGE}/`
 }
 
 // for serverless.yml

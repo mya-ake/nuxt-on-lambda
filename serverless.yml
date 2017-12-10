@@ -8,14 +8,15 @@ provider:
   runtime: nodejs6.10
   region: ap-northeast-1
   stage: ${self:custom.STAGE}
-  profile: my
+  profile: my   # awsのcredential名 複数持っていないなら記述不要
 
 custom:
   NAME: nuxt-on-lambda
   STAGE: ${file(./configs/env.js):exporter.STAGE}
-  BASE_URL: ${file(./configs/env.js):exporter.BASE_URL}
+  BASE_PATH: ${file(./configs/env.js):exporter.BASE_PATH}
   ENDPOINT_ENV: ${file(./configs/env.js):exporter.ENDPOINT_ENV}
 
+# 少しでもデプロイのパッケージファイルを少なくする
 package:
   excludeDevDependencies: true
   exclude:
@@ -25,6 +26,8 @@ package:
     - README.md
     - package.json
     - yarn.lock
+    # Node.js 上で使われないモジュール
+    # 重いものを優先的に除外
     - node_modules/babel**/**
     - node_modules/caniuse-db/**
     - node_modules/caniuse-lite/**
@@ -48,7 +51,7 @@ functions:
     timeout: 30
     memorySize: 128
     environment:
-      BASE_URL: ${self:custom.BASE_URL}
+      BASE_PATH: ${self:custom.BASE_PATH}
       ENDPOINT_ENV: ${self:custom.ENDPOINT_ENV}
     events:
       - http:
