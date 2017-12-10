@@ -15,7 +15,8 @@
     "sls": "sls",
     "sls:deploy": "sls deploy",
     "deploy": "cross-env ENDPOINT_ENV=cf run-s build sls:deploy",
-    "deploy:api_gw": "cross-env ENDPOINT_ENV=api_gw run-s build sls:deploy"
+    "deploy:api_gw": "cross-env ENDPOINT_ENV=api_gw run-s build sls:deploy",
+    "delete": "sls remove"
   },
   "dependencies": {
     "aws-serverless-express": "^3.0.2",
