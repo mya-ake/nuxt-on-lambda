@@ -47,7 +47,7 @@ package:
 
 
 functions:
-  hello:
+  handler:
     handler: server/handler.handler
     timeout: 30
     memorySize: 128
