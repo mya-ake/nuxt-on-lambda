@@ -1,9 +1,5 @@
 # Nuxt.js on AWS Lambda
 
-## :warning:Caution:warning:
-
-This repository is targeted at v1.0.0-rc11 of Nuxt.js.
-
 ## Commands
 
 ### Deploy
