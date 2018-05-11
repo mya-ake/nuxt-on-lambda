@@ -19,8 +19,8 @@
     "delete": "sls remove"
   },
   "dependencies": {
-    "aws-serverless-express": "^3.0.2",
-    "express": "^4.16.2",
+    "aws-serverless-express": "^3.2.0",
+    "express": "^4.16.3",
     "nuxt": "^1.4.0"
   },
   "devDependencies": {
