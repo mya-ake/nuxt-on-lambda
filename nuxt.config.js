@@ -1,5 +1,3 @@
-'use strict'
-
 const { ENV } = require('./configs/env')
 
 module.exports = {
