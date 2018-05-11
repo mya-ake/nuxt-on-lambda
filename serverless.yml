@@ -1,11 +1,11 @@
 service:
   name: ${self:custom.NAME}
 
-frameworkVersion: ">=1.23.0"
+frameworkVersion: ">=1.27.0"
 
 provider:
   name: aws
-  runtime: nodejs6.10
+  runtime: nodejs8.10
   region: ap-northeast-1
   stage: ${self:custom.STAGE}
   profile: my   # awsのcredential名 複数持っていないなら記述不要
@@ -44,6 +44,12 @@ package:
     - server/**
     - configs/**
     - nuxt.config.js
+    - node_modules/postcss/**
+    - node_modules/postcss-cssnext/**
+    - node_modules/postcss-import/**
+    - node_modules/postcss-import-resolver/**
+    - node_modules/postcss-loader/**
+    - node_modules/postcss-url/**
 
 
 functions:
