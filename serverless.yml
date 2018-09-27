@@ -15,6 +15,7 @@ custom:
   STAGE: ${file(./configs/env.js):exporter.STAGE}
   BASE_URL: ${file(./configs/env.js):exporter.BASE_URL}
   ENDPOINT_ENV: ${file(./configs/env.js):exporter.ENDPOINT_ENV}
+  NODE_ENV: ${file(./configs/env.js):exporter.NODE_ENV}
 
 # 少しでもデプロイのパッケージファイルを少なくする
 package:
@@ -34,8 +35,6 @@ package:
     - node_modules/caniuse-lite/**
     - node_modules/prettier/**
     - node_modules/yargs/**
-    - node_modules/postcss**/**
-    - node_modules/cssnano/**
     - node_modules/xxhashjs/**
     - node_modules/jschardet/**
     - node_modules/**/*.md
@@ -44,12 +43,6 @@ package:
     - server/**
     - configs/**
     - nuxt.config.js
-    - node_modules/postcss/**
-    - node_modules/postcss-cssnext/**
-    - node_modules/postcss-import/**
-    - node_modules/postcss-import-resolver/**
-    - node_modules/postcss-loader/**
-    - node_modules/postcss-url/**
 
 
 functions:
@@ -60,6 +53,7 @@ functions:
     environment:
       BASE_URL: ${self:custom.BASE_URL}
       ENDPOINT_ENV: ${self:custom.ENDPOINT_ENV}
+      NODE_ENV: ${self:custom.NODE_ENV}
     events:
       - http:
           path: '/'
