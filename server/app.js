@@ -22,7 +22,7 @@ app.use(setHeaders)
 const BASE_URL = process.env.BASE_URL
 const REGEXP_BASE_URL = new RegExp(`^${BASE_URL}`)
 const BASE_URL_TO_BE_ADDED = BASE_URL.replace(/\/$/, '')
-const buildPath = (originalPath) => {
+const buildPath = originalPath => {
   if (REGEXP_BASE_URL.test(originalPath) === true) {
     return originalPath
   }
