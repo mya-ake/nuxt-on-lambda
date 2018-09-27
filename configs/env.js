@@ -4,8 +4,9 @@ const endpointEnv = process.env.ENDPOINT_ENV || 'cf'
 
 const ENV = {
   STAGE: 'dev',
-  BASE_URL: '/',
-  ENDPOINT_ENV: endpointEnv
+  BASE_URL: '',
+  ENDPOINT_ENV: endpointEnv,
+  NODE_ENV: process.env.NODE_ENV || ''
 }
 
 if (endpointEnv === 'api_gw') {

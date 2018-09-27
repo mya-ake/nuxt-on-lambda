@@ -1,5 +1,5 @@
 const { app } = require('./app')
-const { nuxt, config } = require('./middlewares/nuxt-middleware')
+const { nuxt, config } = require('./core/nuxt')
 const { Builder } = require('nuxt')
 const consola = require('consola')
 
