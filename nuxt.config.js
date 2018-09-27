@@ -14,7 +14,10 @@ module.exports = {
   },
 
   render: {
-    // compressor: { level: 0 }
+    /**
+     * compression を通すと API Gateway がレスポンスを返せないので
+     * なにもしないミドルウェアを定義しておく
+     */
     compressor: (req, res, next) => {
       next()
     }
