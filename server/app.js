@@ -14,7 +14,10 @@ if (process.env.ENDPOINT_ENV === 'api_gw') {
   app.use(envMiddleware)
 }
 
-app.use(loggerMiddleware)
+if (process.env.NODE_ENV !== 'development') {
+  app.use(loggerMiddleware)
+}
+
 app.use(nuxt.render)
 
 module.exports.app = app

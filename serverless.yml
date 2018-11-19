@@ -32,7 +32,6 @@ package:
     # 重いものを優先的に除外
     - node_modules/babel**/**
     - node_modules/caniuse-db/**
-    - node_modules/caniuse-lite/**
     - node_modules/prettier/**
     - node_modules/yargs/**
     - node_modules/xxhashjs/**
@@ -43,6 +42,10 @@ package:
     - server/**
     - configs/**
     - nuxt.config.js
+    - .nuxt/**
+    - node_modules/autoprefixer/**
+    - node_modules/babel-runtime/**
+    - node_modules/babel-extract-comments/**
 
 
 functions:
