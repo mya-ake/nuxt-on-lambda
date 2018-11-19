@@ -1,3 +1,7 @@
+/**
+ * レスポンスヘッダーを設定するミドルウェア
+ * XSS 対策などのヘッダーを記述
+ */
 const setHeadersMiddleware = (req, res, next) => {
   res.removeHeader('x-powered-by')
   res.header('no-cache', 'Set-Cookie')
