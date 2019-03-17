@@ -1,0 +1,23 @@
+{
+  "name": "nuxt-on-lambda-deploy",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "tsc": "tsc",
+    "lint": "eslint ./src/**/*.ts",
+    "deploy": "tsc && node dist/index.js"
+  },
+  "devDependencies": {
+    "@types/node": "^11.11.3",
+    "@typescript-eslint/eslint-plugin": "^1.4.2",
+    "eslint": "^5.15.2",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "prettier": "^1.16.4",
+    "typescript": "^3.3.3333"
+  },
+  "dependencies": {
+    "consola": "^2.5.6"
+  }
+}
