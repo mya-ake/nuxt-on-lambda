@@ -1,11 +1,11 @@
 import consola from 'consola'
-import { DeployOption } from './types/options'
+import { listS3Objects } from './processors'
+import { DeployOptions } from './types/options'
 
-const test = (str: string) => {
-  consola.info(str)
-}
-
-export const deploy = (option: DeployOption = {}) => {
+export const deploy = async (option: DeployOptions = {}) => {
   const { rootDir = process.cwd() } = option
   consola.info(rootDir)
+
+  const objects = await listS3Objects()
+  console.log(objects)
 }

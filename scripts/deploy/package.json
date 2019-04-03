@@ -18,6 +18,7 @@
     "typescript": "^3.3.3333"
   },
   "dependencies": {
+    "aws-sdk": "^2.432.0",
     "consola": "^2.5.6"
   }
 }

@@ -1,3 +1,3 @@
-export interface DeployOption {
+export interface DeployOptions {
   rootDir?: string
 }
