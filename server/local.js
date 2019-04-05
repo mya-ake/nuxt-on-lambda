@@ -15,7 +15,7 @@ const start = async () => {
   app.listen(port, host)
   consola.ready({
     message: `Server listening on http://${host}:${port}`,
-    badge: true
+    badge: true,
   })
 }
 

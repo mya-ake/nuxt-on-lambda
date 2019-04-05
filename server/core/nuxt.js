@@ -7,5 +7,5 @@ const nuxt = new Nuxt(config)
 
 module.exports = {
   nuxt,
-  config
+  config,
 }

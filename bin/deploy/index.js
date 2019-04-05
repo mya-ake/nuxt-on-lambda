@@ -1,3 +1,3 @@
-const { deploy } = require('./../../scripts/deploy');
+const { deploy } = require('./../../scripts/deploy')
 
-deploy();
+deploy()
