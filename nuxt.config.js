@@ -8,7 +8,7 @@ if (ENV.BASE_URL) {
 module.exports = {
   mode: 'universal',
 
-  srcDir: 'app/',
+  srcDir: 'app',
 
   router: {
     ...routerConfig
