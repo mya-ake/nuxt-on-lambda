@@ -8,7 +8,7 @@ export const listObjects = (
   return new Promise((resolve, reject) => {
     s3.listObjectsV2(params, (err, data) => {
       if (err) {
-        reject(new Error(err.message))
+        reject(err)
         return
       }
       if (typeof data.Contents === 'undefined') {
@@ -16,6 +16,30 @@ export const listObjects = (
         return
       }
       resolve(data.Contents)
+    })
+  })
+}
+
+export const putObject = (params: S3.PutObjectRequest) => {
+  return new Promise((resolve, reject) => {
+    s3.putObject(params, (err, data) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(data)
+      }
+    })
+  })
+}
+
+export const deleteObjects = (params: S3.DeleteObjectsRequest) => {
+  return new Promise((resolve, reject) => {
+    s3.deleteObjects(params, (err, data) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(data)
+      }
     })
   })
 }

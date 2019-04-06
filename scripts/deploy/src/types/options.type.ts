@@ -1,3 +1,3 @@
 export interface DeployOptions {
-  rootDir?: string
+  assetsDirs: string[]
 }
