@@ -4,7 +4,7 @@ import path from 'path'
 
 import { putObject } from '../lib/s3'
 import { readFile } from '../lib/file'
-import { FileContext, S3BucketMeta } from 'src/types'
+import { FileContext, S3Bucket } from 'src/types'
 
 const buildKey = ({
   prefix = '',
@@ -19,16 +19,16 @@ const buildKey = ({
 
 const buildParams = async ({
   fileContext,
-  s3BucketMeta,
+  s3Bucket,
 }: {
   fileContext: FileContext
-  s3BucketMeta: S3BucketMeta
+  s3Bucket: S3Bucket
 }): Promise<S3.PutObjectRequest> => {
   const body = await readFile(fileContext.absolutePathname)
   return {
-    Bucket: s3BucketMeta.name,
+    Bucket: s3Bucket.name,
     Key: buildKey({
-      prefix: s3BucketMeta.prefix,
+      prefix: s3Bucket.prefix,
       relativePathname: fileContext.relativePathname,
     }),
     Body: body,
@@ -38,15 +38,15 @@ const buildParams = async ({
 
 type deployAssets = (params: {
   fileContexts: FileContext[]
-  s3BucketMeta: S3BucketMeta
+  s3Bucket: S3Bucket
 }) => Promise<void>
 
 export const deployAssets: deployAssets = async ({
   fileContexts,
-  s3BucketMeta,
+  s3Bucket,
 }) => {
   for (const fileContext of fileContexts) {
-    const params = await buildParams({ fileContext, s3BucketMeta })
+    const params = await buildParams({ fileContext, s3Bucket })
     await putObject(params)
     consola.success(`Deployed: ${fileContext.relativePathname}`)
   }

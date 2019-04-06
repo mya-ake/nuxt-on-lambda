@@ -1,10 +1,3 @@
-import { S3BucketMeta } from 'src/types'
-
-export const S3_BUCKET_META: S3BucketMeta = Object.freeze({
-  name: 'nuxt-on-lambda.mya-ake.org',
-  prefix: '',
-})
-
 export const CONTENT_TYPES: { [key: string]: string } = Object.freeze({
   js: 'application/javascript; charset=utf-8',
   css: 'text/css; charset=utf-8',

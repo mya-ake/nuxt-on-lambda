@@ -5,24 +5,25 @@ import {
   deleteOldObjects,
   buildApp,
   deployApp,
+  purgeCDN,
 } from './processors'
 import { DeployOptions, FileContext } from 'src/types'
-import { S3_BUCKET_META } from './constants'
 
 export const deploy = async (option: DeployOptions) => {
-  const { assetsDirs } = option
+  const { assetsDirs, s3Bucket, cloudFrontId } = option
 
   try {
     await buildApp()
 
     const fileContexts = await buildFileContextsTogether(assetsDirs)
 
-    await deployAssets({ fileContexts, s3BucketMeta: S3_BUCKET_META })
+    await deployAssets({ fileContexts, s3Bucket })
     await deployApp()
 
     await deleteOldObjects({
-      s3BucketMeta: S3_BUCKET_META,
+      s3Bucket,
     })
+    await purgeCDN({ cloudFrontId })
     consola.success('Deploy completed')
   } catch (err) {
     consola.error(err)
