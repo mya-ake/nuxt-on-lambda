@@ -1,5 +1,5 @@
-import { spawn } from './../lib/commands'
+import { spawn } from './../lib/commands';
 
 export const buildApp = () => {
-  return spawn('yarn', ['build'])
-}
+  return spawn('yarn', ['build']);
+};

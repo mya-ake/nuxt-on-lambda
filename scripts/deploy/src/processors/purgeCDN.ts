@@ -1,14 +1,14 @@
-import consola from 'consola'
-import { createInvalidation } from './../lib/cloudFront'
+import consola from 'consola';
+import { createInvalidation } from './../lib/cloudFront';
 
 export const purgeCDN = async ({
   cloudFrontId,
   items = ['/*'],
 }: {
-  cloudFrontId: string
-  items?: string[]
+  cloudFrontId: string;
+  items?: string[];
 }): Promise<void> => {
-  consola.info('Start purging CDN')
+  consola.info('Start purging CDN');
   await createInvalidation({
     DistributionId: cloudFrontId,
     InvalidationBatch: {
@@ -18,6 +18,6 @@ export const purgeCDN = async ({
         Items: items,
       },
     },
-  })
-  consola.success('Succeeded in purging CDN')
-}
+  });
+  consola.success('Succeeded in purging CDN');
+};

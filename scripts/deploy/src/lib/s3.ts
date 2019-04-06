@@ -1,6 +1,6 @@
-import S3 = require('aws-sdk/clients/s3')
+import S3 = require('aws-sdk/clients/s3');
 
-const s3 = new S3()
+const s3 = new S3();
 
 export const listObjects = (
   params: S3.ListObjectsV2Request,
@@ -8,38 +8,38 @@ export const listObjects = (
   return new Promise((resolve, reject) => {
     s3.listObjectsV2(params, (err, data) => {
       if (err) {
-        reject(err)
-        return
+        reject(err);
+        return;
       }
       if (typeof data.Contents === 'undefined') {
-        resolve([])
-        return
+        resolve([]);
+        return;
       }
-      resolve(data.Contents)
-    })
-  })
-}
+      resolve(data.Contents);
+    });
+  });
+};
 
 export const putObject = (params: S3.PutObjectRequest) => {
   return new Promise((resolve, reject) => {
     s3.putObject(params, (err, data) => {
       if (err) {
-        reject(err)
+        reject(err);
       } else {
-        resolve(data)
+        resolve(data);
       }
-    })
-  })
-}
+    });
+  });
+};
 
 export const deleteObjects = (params: S3.DeleteObjectsRequest) => {
   return new Promise((resolve, reject) => {
     s3.deleteObjects(params, (err, data) => {
       if (err) {
-        reject(err)
+        reject(err);
       } else {
-        resolve(data)
+        resolve(data);
       }
-    })
-  })
-}
+    });
+  });
+};

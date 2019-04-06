@@ -1,6 +1,6 @@
-import { CloudFront } from 'aws-sdk'
+import { CloudFront } from 'aws-sdk';
 
-const cloudFront = new CloudFront()
+const cloudFront = new CloudFront();
 
 export const createInvalidation = (
   params: CloudFront.CreateInvalidationRequest,
@@ -8,10 +8,10 @@ export const createInvalidation = (
   return new Promise((resolve, reject) => {
     cloudFront.createInvalidation(params, (err, data) => {
       if (err) {
-        reject(err)
+        reject(err);
       } else {
-        resolve(data)
+        resolve(data);
       }
-    })
-  })
-}
+    });
+  });
+};

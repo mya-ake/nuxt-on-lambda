@@ -1,8 +1,8 @@
-const { ENV } = require('./configs/env')
+const { ENV } = require('./configs/env');
 
-const routerConfig = {}
+const routerConfig = {};
 if (ENV.BASE_URL) {
-  routerConfig.base = ENV.BASE_URL
+  routerConfig.base = ENV.BASE_URL;
 }
 
 module.exports = {
@@ -20,7 +20,7 @@ module.exports = {
      * なにもしないミドルウェアを定義しておく
      */
     compressor: (req, res, next) => {
-      next()
+      next();
     },
   },
 
@@ -70,8 +70,8 @@ module.exports = {
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
           exclude: /(node_modules)/,
-        })
+        });
       }
     },
   },
-}
+};
