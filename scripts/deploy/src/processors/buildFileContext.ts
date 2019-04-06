@@ -12,20 +12,31 @@ const selectContentType = (extension: string): string => {
     : CONTENT_TYPES['plane']
 }
 
+const buildFileContext = ({
+  absolutePathname,
+  dirPathname,
+}: {
+  absolutePathname: string
+  dirPathname: string
+}): FileContext => {
+  const fileName = extractFileName(absolutePathname)
+  const extension = extractExtension(fileName)
+  const relativePathname = absolutePathname.replace(dirPathname, '')
+  const contentType = selectContentType(extension)
+  return {
+    fileName,
+    absolutePathname,
+    relativePathname,
+    contentType,
+  }
+}
+
 const buildFileContexts = async (
   dirPathname: string,
 ): Promise<FileContext[]> => {
   const pathnames = await getFilePathnames(dirPathname)
   const contexts: FileContext[] = pathnames.map(pathname => {
-    const fileName = extractFileName(pathname)
-    const extension = extractExtension(fileName)
-    const context: FileContext = {
-      fileName,
-      absolutePathname: pathname,
-      relativePathname: pathname.replace(dirPathname, ''),
-      contentType: selectContentType(extension),
-    }
-    return context
+    return buildFileContext({ absolutePathname: pathname, dirPathname })
   })
   return contexts
 }
