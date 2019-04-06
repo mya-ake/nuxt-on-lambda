@@ -14,10 +14,9 @@
     "precommit": "npm run lint",
     "sls": "sls",
     "sls:deploy": "sls deploy",
-    "deploy": "cross-env NODE_ENV=production ENDPOINT_ENV=cf run-s build sls:deploy",
+    "deploy": "cross-env NODE_ENV=production ENDPOINT_ENV=cf node bin/deploy/index.js",
     "deploy:api_gw": "cross-env NODE_ENV=production ENDPOINT_ENV=api_gw run-s build sls:deploy",
-    "delete": "sls remove",
-    "deploy:new": "node bin/deploy/index.js"
+    "delete": "sls remove"
   },
   "dependencies": {
     "aws-serverless-express": "^3.3.5",

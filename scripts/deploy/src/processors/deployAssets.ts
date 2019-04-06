@@ -48,7 +48,7 @@ export const deployAssets: deployAssets = async ({
   for (const fileContext of fileContexts) {
     const params = await buildParams({ fileContext, s3BucketMeta })
     await putObject(params)
-    consola.info(`Deployed: ${fileContext.relativePathname}`)
+    consola.success(`Deployed: ${fileContext.relativePathname}`)
   }
   return
 }

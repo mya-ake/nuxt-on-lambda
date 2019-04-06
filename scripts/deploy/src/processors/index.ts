@@ -1,4 +1,5 @@
-export * from './listS3Objects'
 export * from './buildFileContext'
 export * from './deployAssets'
-export * from './extractObjectsToDelete'
+export * from './deleteOldObjects'
+export * from './buildApp'
+export * from './deployApp'
