@@ -21,11 +21,11 @@ const envMiddleware = (req, res, next) => {
     'Overwrite URL',
     `'${originalUrl}'`,
     'to',
-    `'${envUrl}'`
+    `'${envUrl}'`,
   )
   next()
 }
 
 module.exports = {
-  envMiddleware
+  envMiddleware,
 }

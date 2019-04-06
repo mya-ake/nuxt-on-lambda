@@ -6,7 +6,7 @@ const ENV = {
   STAGE: 'dev',
   BASE_URL: '',
   ENDPOINT_ENV: endpointEnv,
-  NODE_ENV: process.env.NODE_ENV || ''
+  NODE_ENV: process.env.NODE_ENV || '',
 }
 
 if (endpointEnv === 'api_gw') {
@@ -20,5 +20,5 @@ const exporter = () => {
 
 module.exports = {
   ENV,
-  exporter
+  exporter,
 }

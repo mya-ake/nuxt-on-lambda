@@ -12,5 +12,5 @@ const setHeadersMiddleware = (req, res, next) => {
 }
 
 module.exports = {
-  setHeadersMiddleware
+  setHeadersMiddleware,
 }
