@@ -1,10 +1,11 @@
+import path from 'path';
 import {
   getFilePathnames,
   extractFileName,
   extractExtension,
 } from './../lib/file';
 import { CONTENT_TYPES } from './../constants';
-import { FileContext } from 'src/types';
+import { FileContext, AssetsDirContext } from 'src/types';
 
 const selectContentType = (extension: string): string => {
   return extension in CONTENT_TYPES
@@ -14,39 +15,43 @@ const selectContentType = (extension: string): string => {
 
 const buildFileContext = ({
   absolutePathname,
-  dirPathname,
+  assetsDirContext,
 }: {
   absolutePathname: string;
-  dirPathname: string;
+  assetsDirContext: AssetsDirContext;
 }): FileContext => {
+  const { pathname: dirPathname } = assetsDirContext;
+  const { options = { relativePrefix: '' } } = assetsDirContext;
   const fileName = extractFileName(absolutePathname);
   const extension = extractExtension(fileName);
+  const { relativePrefix = '' } = options;
   const relativePathname = absolutePathname.replace(dirPathname, '');
+  const s3Key = path.join(relativePrefix, relativePathname).replace(/^\//, '');
   const contentType = selectContentType(extension);
   return {
     fileName,
     absolutePathname,
-    relativePathname,
+    s3Key,
     contentType,
   };
 };
 
 const buildFileContexts = async (
-  dirPathname: string,
+  assetsDirContext: AssetsDirContext,
 ): Promise<FileContext[]> => {
-  const pathnames = await getFilePathnames(dirPathname);
+  const pathnames = await getFilePathnames(assetsDirContext.pathname);
   const contexts: FileContext[] = pathnames.map(pathname => {
-    return buildFileContext({ absolutePathname: pathname, dirPathname });
+    return buildFileContext({ absolutePathname: pathname, assetsDirContext });
   });
   return contexts;
 };
 
 export const buildFileContextsTogether = async (
-  assetsDirs: string[],
+  assetsDirContexts: AssetsDirContext[],
 ): Promise<FileContext[]> => {
   let contexts: FileContext[] = [];
-  for (const dirPathname of assetsDirs) {
-    contexts = contexts.concat(await buildFileContexts(dirPathname));
+  for (const assetsDirContext of assetsDirContexts) {
+    contexts = contexts.concat(await buildFileContexts(assetsDirContext));
   }
   return contexts;
 };

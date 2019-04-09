@@ -29,7 +29,7 @@ const buildParams = async ({
     Bucket: s3Bucket.name,
     Key: buildKey({
       prefix: s3Bucket.prefix,
-      relativePathname: fileContext.relativePathname,
+      relativePathname: fileContext.s3Key,
     }),
     Body: body,
     ContentType: fileContext.contentType,
@@ -48,7 +48,7 @@ export const deployAssets: deployAssets = async ({
   for (const fileContext of fileContexts) {
     const params = await buildParams({ fileContext, s3Bucket });
     await putObject(params);
-    consola.success(`Deployed: ${fileContext.relativePathname}`);
+    consola.success(`Deployed: ${fileContext.s3Key}`);
   }
   return;
 };
