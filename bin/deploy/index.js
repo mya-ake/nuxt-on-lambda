@@ -2,6 +2,7 @@ const path = require('path');
 
 const { deploy } = require('./../../scripts/deploy');
 const nuxtConfig = require('./../../nuxt.config');
+require('dotenv').config();
 
 const ROOT_DIR = process.cwd();
 const SRC_DIR = path.join(ROOT_DIR, nuxtConfig.srcDir);
@@ -14,9 +15,9 @@ const assetsDirs = [
   { pathname: NUXT_STATIC_DIR },
 ];
 const s3Bucket = {
-  name: 'nuxt-on-lambda.mya-ake.org',
-  prefix: '',
+  name: process.env.S3_BUCKET_NAME,
+  prefix: process.env.S3_BUCKET_PREFIX,
 };
-const cloudFrontId = 'E2KRRMGU5PEOSS';
+const cloudFrontId = process.env.CLOUDFRONT_ID;
 
 deploy({ assetsDirs, s3Bucket, cloudFrontId });

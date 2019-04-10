@@ -12,3 +12,5 @@ yarn-error.log
 ./dist
 
 .serverless
+
+.env
