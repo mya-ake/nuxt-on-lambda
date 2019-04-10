@@ -1,8 +1,8 @@
 const path = require('path');
+require('dotenv').config();
 
 const { deploy } = require('./../../scripts/deploy');
 const nuxtConfig = require('./../../nuxt.config');
-require('dotenv').config();
 
 const ROOT_DIR = process.cwd();
 const SRC_DIR = path.join(ROOT_DIR, nuxtConfig.srcDir);
