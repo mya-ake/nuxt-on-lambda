@@ -49,8 +49,8 @@ package:
 
 
 functions:
-  handler:
-    handler: server/handler.handler
+  render:
+    handler: server/handler.render
     timeout: 30
     memorySize: 128
     environment:
