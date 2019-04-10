@@ -13,4 +13,4 @@ export const CONTENT_TYPES: { [key: string]: string } = Object.freeze({
   eot: 'application/vnd.ms-fontobject',
   plane: 'text/plain; charset=utf-8',
   webmanifest: 'application/json; charset=utf-8',
-})
+});
