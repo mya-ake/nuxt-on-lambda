@@ -9,6 +9,6 @@ yarn-error.log
 .nuxt
 
 # Nuxt generate
-dist
+./dist
 
 .serverless

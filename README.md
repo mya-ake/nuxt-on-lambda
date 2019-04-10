@@ -4,23 +4,25 @@
 
 ### Deploy
 
-#### Deploy for API Gateway
+#### Build & Deploy for API Gateway
 
-build & deploy
+Endpoint: API Gateway
+Deploy to: Lambda
 
 ```
 $ yarn deploy:api_gw
 ```
 
-#### Deploy for Custom Domain
+#### Build & Deploy for CloudFront
 
-build & deploy
+Endpoint: CloudFront
+Deploy to: Lambda, S3
 
 ```
 $ yarn deploy
 ```
 
-### Remove service 
+### Remove Lambda 
 
 ```
 $ yarn delete
