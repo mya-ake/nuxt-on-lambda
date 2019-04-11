@@ -1,0 +1,52 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+      {
+          "Sid": "VisualEditor0",
+          "Effect": "Allow",
+          "Action": [
+              "lambda:CreateFunction",
+              "lambda:ListVersionsByFunction",
+              "lambda:GetFunctionConfiguration",
+              "lambda:DeleteFunction",
+              "lambda:GetFunction",
+              "lambda:UpdateFunctionConfiguration",
+              "lambda:UpdateFunctionCode",
+              "lambda:AddPermission",
+              "lambda:PublishVersion",
+              "cloudformation:CancelUpdateStack",
+              "cloudformation:DescribeStackResource",
+              "cloudformation:DescribeStackEvents",
+              "cloudformation:UpdateStack",
+              "cloudformation:ListStackResources",
+              "cloudformation:DescribeStackInstance",
+              "cloudformation:DescribeStackSet",
+              "cloudformation:CreateStack",
+              "cloudformation:DeleteStack",
+              "cloudformation:DescribeStackResources",
+              "cloudformation:DescribeStacks",
+              "cloudformation:ValidateTemplate",
+              "iam:CreateRole",
+              "iam:PutRolePolicy",
+              "iam:PassRole",
+              "iam:GetRole",
+              "iam:UpdateRole",
+              "iam:DeleteRole",
+              "iam:DeleteRolePolicy",
+              "s3:CreateBucket",
+              "s3:ListBucket",
+              "s3:PutEncryptionConfiguration",
+              "s3:DeleteObject",
+              "s3:DeleteBucket",
+              "s3:PutObject",
+              "s3:GetObject",
+              "cloudfront:CreateInvalidation",
+              "apigateway:*",
+              "logs:DescribeLogGroups",
+              "logs:DeleteLogGroup",
+              "logs:CreateLogGroup"
+          ],
+          "Resource": "*"
+      }
+  ]
+}
