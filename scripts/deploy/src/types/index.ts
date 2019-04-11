@@ -1,2 +1,2 @@
-export * from './options.type';
+export * from './config.type';
 export * from './contexts.type';

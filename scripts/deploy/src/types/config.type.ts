@@ -5,7 +5,7 @@ export interface S3Bucket {
   prefix?: string;
 }
 
-export interface DeployOptions {
+export interface DeployConfig {
   assetsDirs: AssetsDirContext[];
   s3Bucket: S3Bucket;
   cloudFrontId: string;

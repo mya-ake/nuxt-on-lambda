@@ -3,8 +3,8 @@ import {
   getFilePathnames,
   extractFileName,
   extractExtension,
-} from './../lib/file';
-import { CONTENT_TYPES } from './../constants';
+} from '../lib/file';
+import { CONTENT_TYPES } from '../constants';
 import { FileContext, AssetsDirContext } from 'src/types';
 
 const selectContentType = (extension: string): string => {
@@ -21,12 +21,12 @@ const buildFileContext = ({
   assetsDirContext: AssetsDirContext;
 }): FileContext => {
   const { pathname: dirPathname } = assetsDirContext;
-  const { options = { relativePrefix: '' } } = assetsDirContext;
+  const { options = { prefix: '' } } = assetsDirContext;
   const fileName = extractFileName(absolutePathname);
   const extension = extractExtension(fileName);
-  const { relativePrefix = '' } = options;
+  const { prefix = '' } = options;
   const relativePathname = absolutePathname.replace(dirPathname, '');
-  const s3Key = path.join(relativePrefix, relativePathname).replace(/^\//, '');
+  const s3Key = path.join(prefix, relativePathname).replace(/^\//, '');
   const contentType = selectContentType(extension);
   return {
     fileName,

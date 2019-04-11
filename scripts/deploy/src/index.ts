@@ -7,10 +7,10 @@ import {
   deployApp,
   purgeCDN,
 } from './processors';
-import { DeployOptions, FileContext } from 'src/types';
+import { DeployConfig } from 'src/types';
 
-export const deploy = async (option: DeployOptions) => {
-  const { assetsDirs, s3Bucket, cloudFrontId } = option;
+export const deploy = async (config: DeployConfig) => {
+  const { assetsDirs, s3Bucket, cloudFrontId } = config;
 
   try {
     await buildApp();
@@ -27,5 +27,6 @@ export const deploy = async (option: DeployOptions) => {
     consola.success('Deploy completed');
   } catch (err) {
     consola.error(err);
+    process.exit(1);
   }
 };

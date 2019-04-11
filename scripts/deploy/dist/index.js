@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const consola_1 = __importDefault(require("consola"));
 const processors_1 = require("./processors");
-exports.deploy = async (option) => {
-    const { assetsDirs, s3Bucket, cloudFrontId } = option;
+exports.deploy = async (config) => {
+    const { assetsDirs, s3Bucket, cloudFrontId } = config;
     try {
         await processors_1.buildApp();
         const fileContexts = await processors_1.buildFileContextsTogether(assetsDirs);
@@ -20,5 +20,6 @@ exports.deploy = async (option) => {
     }
     catch (err) {
         consola_1.default.error(err);
+        process.exit(1);
     }
 };

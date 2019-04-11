@@ -7,7 +7,7 @@ export interface FileContext {
 export interface AssetsDirContext {
     pathname: string;
     options?: {
-        relativePrefix?: string;
+        prefix?: string;
     };
 }
 export interface S3ObjectContext {

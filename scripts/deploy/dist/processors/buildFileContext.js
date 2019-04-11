@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const path_1 = __importDefault(require("path"));
-const file_1 = require("./../lib/file");
-const constants_1 = require("./../constants");
+const file_1 = require("../lib/file");
+const constants_1 = require("../constants");
 const selectContentType = (extension) => {
     return extension in constants_1.CONTENT_TYPES
         ? constants_1.CONTENT_TYPES[extension]
@@ -13,12 +13,12 @@ const selectContentType = (extension) => {
 };
 const buildFileContext = ({ absolutePathname, assetsDirContext, }) => {
     const { pathname: dirPathname } = assetsDirContext;
-    const { options = { relativePrefix: '' } } = assetsDirContext;
+    const { options = { prefix: '' } } = assetsDirContext;
     const fileName = file_1.extractFileName(absolutePathname);
     const extension = file_1.extractExtension(fileName);
-    const { relativePrefix = '' } = options;
+    const { prefix = '' } = options;
     const relativePathname = absolutePathname.replace(dirPathname, '');
-    const s3Key = path_1.default.join(relativePrefix, relativePathname).replace(/^\//, '');
+    const s3Key = path_1.default.join(prefix, relativePathname).replace(/^\//, '');
     const contentType = selectContentType(extension);
     return {
         fileName,
