@@ -7,32 +7,49 @@ executors:
       - image: circleci/node:8.10
 
 commands:
-  save_modules:
+  save_app_modules:
     steps:
       - save_cache:
           paths:
             - ~/workspace/node_modules
+            - ~/workspace/scripts/deploy/node_modules
           key: modules-{{ .Branch }}-{{ checksum "yarn.lock" }}-{{ checksum ".node-version" }}
-  restore_modules:
+  restore_app_modules:
     steps:
       - restore_cache:
           key: modules-{{ .Branch }}-{{ checksum "yarn.lock" }}-{{ checksum ".node-version" }}
+  save_scripts_modules:
+    steps:
+      - save_cache:
+          paths:
+            - ~/workspace/scripts/deploy/node_modules
+          key: modules-{{ .Branch }}-{{ checksum "scripts/deploy/yarn.lock" }}-{{ checksum ".node-version" }}
+  restore_scripts_modules:
+    steps:
+      - restore_cache:
+          key: modules-{{ .Branch }}-{{ checksum "scripts/deploy/yarn.lock" }}-{{ checksum ".node-version" }}
 
 jobs:
   install:
     executor: default
     steps:
       - checkout
-      - restore_modules
+      - restore_app_modules
+      - restore_scripts_modules
       - run:
-          name: Install
+          name: Install app modules
           command: yarn
-      - save_modules
+      - run:
+          name: Install scripts modules
+          working_directory: ~/workspace/scripts/deploy
+          command: yarn
+      - save_app_modules
+      - save_scripts_modules
   lint:
     executor: default
     steps:
       - checkout
-      - restore_modules
+      - restore_app_modules
       - run:
           name: Lint
           command: yarn lint
@@ -40,7 +57,7 @@ jobs:
     executor: default
     steps:
       - checkout
-      - restore_modules
+      - restore_app_modules
       - run:
           name: Build
           command: yarn build
@@ -48,9 +65,8 @@ jobs:
     executor: default
     steps:
       - checkout
-      - restore_modules
-      - run:
-          name: Deploy
+      - restore_app_modules
+      - deploy:
           command: yarn deploy
 
 workflows:
@@ -76,8 +92,6 @@ workflows:
           filters:
             branches:
               only: /.*/
-            tags:
-              only: /^v[0-9]+(\.[0-9]+){2}$/
       - deploy:
           requires:
             - lint
