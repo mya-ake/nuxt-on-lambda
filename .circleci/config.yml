@@ -1,0 +1,66 @@
+version: 2.1
+
+
+executors:
+  default:
+    working_directory: ~/workspace
+    docker:
+      - image: circleci/node:8.10
+
+commands:
+  save_modules:
+    steps:
+      - save_cache:
+          paths:
+            - ~/workspace/node_modules
+          key: modules-{{ .Branch }}-{{ checksum "yarn.lock" }}-{{ checksum ".node-version" }}
+  restore_modules:
+    steps:
+      - restore_cache:
+          key: modules-{{ .Branch }}-{{ checksum "yarn.lock" }}-{{ checksum ".node-version" }}
+
+jobs:
+  install:
+    executor: default
+    steps:
+      - checkout
+      - restore_modules
+      - run:
+          name: Install
+          command: yarn
+      - save_modules
+  lint:
+    executor: default
+    steps:
+      - checkout
+      - restore_modules
+      - run:
+          name: Lint
+          command: yarn lint
+  build-test:
+    executor: default
+    steps:
+      - checkout
+      - restore_modules
+      - run:
+          name: Build
+          command: yarn build
+  deploy:
+    executor: default
+    steps:
+      - checkout
+      - restore_modules
+      - run:
+          name: Deploy
+          command: yarn deploy
+
+workflows:
+  process:
+    jobs:
+      - install
+      - lint:
+          requires:
+            - install
+      - build-test:
+          requires:
+            - lint
