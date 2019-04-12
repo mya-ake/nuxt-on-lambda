@@ -12,7 +12,6 @@ commands:
       - save_cache:
           paths:
             - ~/workspace/node_modules
-            - ~/workspace/scripts/deploy/node_modules
           key: modules-{{ .Branch }}-{{ checksum "yarn.lock" }}-{{ checksum ".node-version" }}
   restore_app_modules:
     steps:
@@ -66,7 +65,9 @@ jobs:
     steps:
       - checkout
       - restore_app_modules
+      - restore_scripts_modules
       - deploy:
+          name: Deploy
           command: yarn deploy
 
 workflows:
