@@ -11,7 +11,7 @@ const NUXT_CLIENT_DIR = path.join(NUXT_DIR, 'dist', 'client');
 const NUXT_STATIC_DIR = path.join(SRC_DIR, 'static');
 
 const assetsDirs = [
-  { pathname: NUXT_CLIENT_DIR, options: { relativePrefix: '_nuxt' } },
+  { pathname: NUXT_CLIENT_DIR, options: { prefix: '_nuxt' } },
   { pathname: NUXT_STATIC_DIR },
 ];
 const s3Bucket = {
