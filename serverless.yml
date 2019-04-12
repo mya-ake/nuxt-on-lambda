@@ -8,7 +8,6 @@ provider:
   runtime: nodejs8.10
   region: ap-northeast-1
   stage: ${self:custom.STAGE}
-  profile: my   # awsのcredential名 複数持っていないなら記述不要
 
 custom:
   NAME: nuxt-on-lambda
