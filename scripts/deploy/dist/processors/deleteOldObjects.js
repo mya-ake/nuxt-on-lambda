@@ -23,7 +23,7 @@ const isObjectToDelete = (s3ObjectContext) => {
     const { lastModified } = s3ObjectContext;
     const currentDate = dayjs_1.default(new Date());
     const modifiedDate = dayjs_1.default(lastModified);
-    return currentDate.diff(modifiedDate, 'minute') > 3;
+    return currentDate.diff(modifiedDate, 'day') > 7;
 };
 const deleteS3Objects = async ({ s3Bucket, objectsToDelete, }) => {
     const objects = objectsToDelete.map(({ key }) => ({ Key: key }));
