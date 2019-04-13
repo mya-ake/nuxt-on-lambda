@@ -7,6 +7,7 @@ const ENV = {
   BASE_URL: '',
   ENDPOINT_ENV: endpointEnv,
   NODE_ENV: process.env.NODE_ENV || '',
+  GENERATE_ERROR_PAGE: Boolean(process.env.GENERATE_ERROR_PAGE),
 };
 
 if (endpointEnv === 'api_gw') {

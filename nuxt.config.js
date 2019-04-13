@@ -5,6 +5,11 @@ if (ENV.BASE_URL) {
   routerConfig.base = ENV.BASE_URL;
 }
 
+const generate = {};
+if (ENV.GENERATE_ERROR_PAGE) {
+  generate.routes = ['/403', '/404', '/500'];
+}
+
 module.exports = {
   mode: 'universal',
 
@@ -73,5 +78,11 @@ module.exports = {
         });
       }
     },
+  },
+
+  generate,
+
+  env: {
+    GENERATE_ERROR_PAGE: ENV.GENERATE_ERROR_PAGE,
   },
 };

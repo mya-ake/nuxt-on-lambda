@@ -9,6 +9,7 @@ export interface AssetsDirContext {
   pathname: string;
   options?: {
     prefix?: string;
+    includes?: string[];
   };
 }
 

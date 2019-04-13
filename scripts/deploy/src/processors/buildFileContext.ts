@@ -1,8 +1,10 @@
 import path from 'path';
+import minimatch from 'minimatch';
 import {
   getFilePathnames,
   extractFileName,
   extractExtension,
+  isDirectory,
 } from '../lib/file';
 import { CONTENT_TYPES } from '../constants';
 import { FileContext, AssetsDirContext } from 'src/types';
@@ -36,13 +38,43 @@ const buildFileContext = ({
   };
 };
 
+const isMatch = ({
+  pathname,
+  assetsDirContext,
+}: {
+  pathname: string;
+  assetsDirContext: AssetsDirContext;
+}) => {
+  if (assetsDirContext.options == null) {
+    return true;
+  }
+  const { includes = [] } = assetsDirContext.options;
+  if (includes.length === 0) {
+    return true;
+  }
+  return includes.some(match => {
+    return minimatch(pathname, match, { matchBase: true, dot: true });
+  });
+};
+
 const buildFileContexts = async (
   assetsDirContext: AssetsDirContext,
 ): Promise<FileContext[]> => {
-  const pathnames = await getFilePathnames(assetsDirContext.pathname);
-  const contexts: FileContext[] = pathnames.map(pathname => {
-    return buildFileContext({ absolutePathname: pathname, assetsDirContext });
-  });
+  const isFile = !(await isDirectory(assetsDirContext.pathname));
+  const pathnames = isFile
+    ? [assetsDirContext.pathname]
+    : await getFilePathnames(assetsDirContext.pathname);
+
+  const contexts: FileContext[] = pathnames
+    .filter(pathname => {
+      return isMatch({ pathname, assetsDirContext });
+    })
+    .map(pathname => {
+      return buildFileContext({
+        absolutePathname: pathname,
+        assetsDirContext,
+      });
+    });
   return contexts;
 };
 

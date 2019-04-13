@@ -6,9 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const consola_1 = __importDefault(require("consola"));
 const processors_1 = require("./processors");
 exports.deploy = async (config) => {
-    const { assetsDirs, s3Bucket, cloudFrontId } = config;
+    const { assetsDirs, s3Bucket, cloudFrontId, buildCommands } = config;
     try {
-        await processors_1.buildApp();
+        await processors_1.buildApp(buildCommands);
         const fileContexts = await processors_1.buildFileContextsTogether(assetsDirs);
         await processors_1.deployAssets({ fileContexts, s3Bucket });
         await processors_1.deployApp();

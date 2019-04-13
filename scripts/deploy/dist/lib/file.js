@@ -19,13 +19,16 @@ exports.extractFileName = (pathname) => {
 exports.extractExtension = (pathname) => {
     return pathname.split('.').pop() || '';
 };
+exports.isDirectory = async (pathname) => {
+    const pathState = await fsPromises.stat(pathname);
+    return pathState.isDirectory();
+};
 exports.getFilePathnames = async (dirPathname) => {
     const pathnames = await fsPromises.readdir(dirPathname);
     let allPathnames = [];
     for (const pathname of pathnames) {
         const absoluteFilePathname = path_1.default.join(dirPathname, pathname);
-        const pathState = await fsPromises.stat(absoluteFilePathname);
-        if (pathState.isDirectory()) {
+        if (await exports.isDirectory(absoluteFilePathname)) {
             const nestedFilePathnames = await exports.getFilePathnames(absoluteFilePathname);
             allPathnames = allPathnames.concat(nestedFilePathnames);
         }

@@ -9,7 +9,7 @@
     "dev": "cross-env NODE_ENV=development nodemon server/local.js --watch server",
     "build": "nuxt build",
     "start": "cross-env NODE_ENV=production node server/local.js",
-    "generate": "nuxt generate",
+    "generate:error": "cross-env NODE_ENV=production GENERATE_ERROR_PAGE=true nuxt generate",
     "lint": "vue-cli-service lint --ext .js,.vue --no-fix .",
     "lint:fix": "vue-cli-service lint --ext .js,.vue .",
     "precommit": "npm run lint",

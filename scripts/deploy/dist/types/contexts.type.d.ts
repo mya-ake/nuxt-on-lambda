@@ -8,6 +8,7 @@ export interface AssetsDirContext {
     pathname: string;
     options?: {
         prefix?: string;
+        includes?: string[];
     };
 }
 export interface S3ObjectContext {

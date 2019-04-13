@@ -10,10 +10,10 @@ import {
 import { DeployConfig } from 'src/types';
 
 export const deploy = async (config: DeployConfig) => {
-  const { assetsDirs, s3Bucket, cloudFrontId } = config;
+  const { assetsDirs, s3Bucket, cloudFrontId, buildCommands } = config;
 
   try {
-    await buildApp();
+    await buildApp(buildCommands);
 
     const fileContexts = await buildFileContextsTogether(assetsDirs);
 

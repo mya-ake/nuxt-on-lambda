@@ -18,13 +18,17 @@ export const extractExtension = (pathname: string): string => {
   return pathname.split('.').pop() || '';
 };
 
+export const isDirectory = async (pathname: string) => {
+  const pathState = await fsPromises.stat(pathname);
+  return pathState.isDirectory();
+};
+
 export const getFilePathnames = async (dirPathname: string) => {
   const pathnames = await fsPromises.readdir(dirPathname);
   let allPathnames: string[] = [];
   for (const pathname of pathnames) {
     const absoluteFilePathname = path.join(dirPathname, pathname);
-    const pathState = await fsPromises.stat(absoluteFilePathname);
-    if (pathState.isDirectory()) {
+    if (await isDirectory(absoluteFilePathname)) {
       const nestedFilePathnames = await getFilePathnames(absoluteFilePathname);
       allPathnames = allPathnames.concat(nestedFilePathnames);
     } else {

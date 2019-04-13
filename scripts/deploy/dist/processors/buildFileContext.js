@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const path_1 = __importDefault(require("path"));
+const minimatch_1 = __importDefault(require("minimatch"));
 const file_1 = require("../lib/file");
 const constants_1 = require("../constants");
 const selectContentType = (extension) => {
@@ -27,10 +28,32 @@ const buildFileContext = ({ absolutePathname, assetsDirContext, }) => {
         contentType,
     };
 };
+const isMatch = ({ pathname, assetsDirContext, }) => {
+    if (assetsDirContext.options == null) {
+        return true;
+    }
+    const { includes = [] } = assetsDirContext.options;
+    if (includes.length === 0) {
+        return true;
+    }
+    return includes.some(match => {
+        return minimatch_1.default(pathname, match, { matchBase: true, dot: true });
+    });
+};
 const buildFileContexts = async (assetsDirContext) => {
-    const pathnames = await file_1.getFilePathnames(assetsDirContext.pathname);
-    const contexts = pathnames.map(pathname => {
-        return buildFileContext({ absolutePathname: pathname, assetsDirContext });
+    const isFile = !(await file_1.isDirectory(assetsDirContext.pathname));
+    const pathnames = isFile
+        ? [assetsDirContext.pathname]
+        : await file_1.getFilePathnames(assetsDirContext.pathname);
+    const contexts = pathnames
+        .filter(pathname => {
+        return isMatch({ pathname, assetsDirContext });
+    })
+        .map(pathname => {
+        return buildFileContext({
+            absolutePathname: pathname,
+            assetsDirContext,
+        });
     });
     return contexts;
 };

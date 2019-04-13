@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CONTENT_TYPES = Object.freeze({
+    html: 'text/html; charset=utf-8',
     js: 'application/javascript; charset=utf-8',
     css: 'text/css; charset=utf-8',
     map: 'application/octet-stream; charset=utf-8',

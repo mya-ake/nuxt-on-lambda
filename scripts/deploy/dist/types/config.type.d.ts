@@ -7,4 +7,5 @@ export interface DeployConfig {
     assetsDirs: AssetsDirContext[];
     s3Bucket: S3Bucket;
     cloudFrontId: string;
+    buildCommands: string[];
 }
