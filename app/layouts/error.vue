@@ -26,7 +26,7 @@ export default {
 
     // for generage error page
     statusCode() {
-      if (this.error.path) {
+      if (this.isModeGenerateErrorPage && this.error.path) {
         return this.error.path.replace('/', '');
       }
       return '';
