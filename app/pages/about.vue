@@ -3,7 +3,6 @@
   <section class="container">
     <div>
       <h1>About Page</h1>
-      <p>Scroll down to the link.</p>
       <div class="links">
         <nuxt-link to="/">Home</nuxt-link>
       </div>
@@ -21,7 +20,7 @@
 }
 
 .links {
-  padding-top: 1500px;
+  padding-top: 36px;
   padding-bottom: 24px;
 }
 </style>
