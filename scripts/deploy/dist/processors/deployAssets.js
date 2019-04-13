@@ -11,7 +11,14 @@ const buildKey = ({ prefix = '', relativePathname, }) => {
     const key = path_1.default.join(prefix, relativePathname);
     return key.replace(/^\//, '');
 };
-const buildParams = async ({ fileContext, s3Bucket, }) => {
+const createCacheControlBuilder = (deployConfig) => {
+    const { cacheControl } = deployConfig;
+    if (typeof cacheControl === 'function') {
+        return cacheControl;
+    }
+    return () => cacheControl;
+};
+const buildParams = async ({ fileContext, s3Bucket, cacheControlBuilder, }) => {
     const body = await file_1.readFile(fileContext.absolutePathname);
     return {
         Bucket: s3Bucket.name,
@@ -21,11 +28,17 @@ const buildParams = async ({ fileContext, s3Bucket, }) => {
         }),
         Body: body,
         ContentType: fileContext.contentType,
+        CacheControl: cacheControlBuilder(fileContext),
     };
 };
-exports.deployAssets = async ({ fileContexts, s3Bucket, }) => {
+exports.deployAssets = async ({ fileContexts, s3Bucket, deployConifg, }) => {
+    const cacheControlBuilder = createCacheControlBuilder(deployConifg);
     for (const fileContext of fileContexts) {
-        const params = await buildParams({ fileContext, s3Bucket });
+        const params = await buildParams({
+            fileContext,
+            s3Bucket,
+            cacheControlBuilder,
+        });
         await s3_1.putObject(params);
         consola_1.default.success(`Deployed: ${fileContext.s3Key}`);
     }

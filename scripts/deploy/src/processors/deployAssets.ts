@@ -4,7 +4,7 @@ import path from 'path';
 
 import { putObject } from '../lib/s3';
 import { readFile } from '../lib/file';
-import { FileContext, S3Bucket } from 'src/types';
+import { FileContext, S3Bucket, DeployConfig } from 'src/types';
 
 const buildKey = ({
   prefix = '',
@@ -17,12 +17,24 @@ const buildKey = ({
   return key.replace(/^\//, '');
 };
 
+const createCacheControlBuilder = (
+  deployConfig: DeployConfig,
+): ((fileContext: FileContext) => string) => {
+  const { cacheControl } = deployConfig;
+  if (typeof cacheControl === 'function') {
+    return cacheControl;
+  }
+  return () => cacheControl;
+};
+
 const buildParams = async ({
   fileContext,
   s3Bucket,
+  cacheControlBuilder,
 }: {
   fileContext: FileContext;
   s3Bucket: S3Bucket;
+  cacheControlBuilder: (fileContext: FileContext) => string;
 }): Promise<S3.PutObjectRequest> => {
   const body = await readFile(fileContext.absolutePathname);
   return {
@@ -33,20 +45,29 @@ const buildParams = async ({
     }),
     Body: body,
     ContentType: fileContext.contentType,
+    CacheControl: cacheControlBuilder(fileContext),
   };
 };
 
 type deployAssets = (params: {
   fileContexts: FileContext[];
   s3Bucket: S3Bucket;
+  deployConifg: DeployConfig;
 }) => Promise<void>;
 
 export const deployAssets: deployAssets = async ({
   fileContexts,
   s3Bucket,
+  deployConifg,
 }) => {
+  const cacheControlBuilder = createCacheControlBuilder(deployConifg);
+
   for (const fileContext of fileContexts) {
-    const params = await buildParams({ fileContext, s3Bucket });
+    const params = await buildParams({
+      fileContext,
+      s3Bucket,
+      cacheControlBuilder,
+    });
     await putObject(params);
     consola.success(`Deployed: ${fileContext.s3Key}`);
   }

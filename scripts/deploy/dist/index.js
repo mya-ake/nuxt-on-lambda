@@ -10,7 +10,7 @@ exports.deploy = async (config) => {
     try {
         await processors_1.buildApp(buildCommands);
         const fileContexts = await processors_1.buildFileContextsTogether(assetsDirs);
-        await processors_1.deployAssets({ fileContexts, s3Bucket });
+        await processors_1.deployAssets({ fileContexts, s3Bucket, deployConifg: config });
         await processors_1.deployApp();
         await processors_1.deleteOldObjects({
             s3Bucket,

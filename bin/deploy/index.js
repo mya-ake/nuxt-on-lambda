@@ -28,5 +28,6 @@ const s3Bucket = {
 };
 const cloudFrontId = process.env.CLOUDFRONT_ID;
 const buildCommands = ['yarn build', 'yarn generate:error'];
+const cacheControl = `public, max-age=${60 * 60 * 24 * 7}`; // e.g. one week
 
-deploy({ assetsDirs, s3Bucket, cloudFrontId, buildCommands });
+deploy({ assetsDirs, s3Bucket, cloudFrontId, buildCommands, cacheControl });

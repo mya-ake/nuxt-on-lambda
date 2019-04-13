@@ -17,7 +17,7 @@ export const deploy = async (config: DeployConfig) => {
 
     const fileContexts = await buildFileContextsTogether(assetsDirs);
 
-    await deployAssets({ fileContexts, s3Bucket });
+    await deployAssets({ fileContexts, s3Bucket, deployConifg: config });
     await deployApp();
 
     await deleteOldObjects({
