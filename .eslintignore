@@ -1,1 +1,4 @@
 scripts
+node_modules
+dist
+.nuxt
