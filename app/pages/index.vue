@@ -5,6 +5,8 @@
       <logo />
       <h1 class="title">Nuxt.js on AWS Lambda</h1>
       <h2 class="subtitle">Nuxt.js project</h2>
+      <p>Nuxt.js version: {{ nuxtVersion }}</p>
+      <p>Node.js version: {{ nodeVersion }}</p>
       <div class="links">
         <nuxt-link to="/about">About</nuxt-link>
       </div>
@@ -14,10 +16,16 @@
 
 <script>
 import Logo from '~/components/Logo.vue';
+import { version as nuxtVersion } from 'nuxt/package.json';
 
 export default {
   components: {
     Logo,
+  },
+
+  computed: {
+    nuxtVersion: () => nuxtVersion,
+    nodeVersion: () => process.env.NODE_VERSION,
   },
 };
 </script>

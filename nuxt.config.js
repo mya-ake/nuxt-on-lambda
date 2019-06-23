@@ -84,5 +84,6 @@ module.exports = {
 
   env: {
     GENERATE_ERROR_PAGE: ENV.GENERATE_ERROR_PAGE,
+    NODE_VERSION: process.versions.node,
   },
 };
