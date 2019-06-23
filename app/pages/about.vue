@@ -1,4 +1,3 @@
-<!-- prettier-ignore -->
 <template>
   <section class="container">
     <div>

@@ -1,4 +1,3 @@
-<!-- prettier-ignore -->
 <template>
   <section class="container">
     <div>
@@ -6,7 +5,8 @@
       <h1 class="title">Nuxt.js on AWS Lambda</h1>
       <h2 class="subtitle">Nuxt.js project</h2>
       <p>Nuxt.js version: {{ nuxtVersion }}</p>
-      <p>Node.js version: {{ nodeVersion }}</p>
+      <p>Build Node.js version: {{ buildNodeVersion }}</p>
+      <p>Server Node.js version: {{ serverNodeVersion }}</p>
       <div class="links">
         <nuxt-link to="/about">About</nuxt-link>
       </div>
@@ -23,9 +23,20 @@ export default {
     Logo,
   },
 
+  asyncData() {
+    // If you want to keep version on the client side, use the store.
+    const serverNodeVersion = process.server
+      ? process.versions.node
+      : 'unknown';
+
+    return {
+      serverNodeVersion,
+    };
+  },
+
   computed: {
     nuxtVersion: () => nuxtVersion,
-    nodeVersion: () => process.env.NODE_VERSION,
+    buildNodeVersion: () => process.env.NODE_VERSION,
   },
 };
 </script>
