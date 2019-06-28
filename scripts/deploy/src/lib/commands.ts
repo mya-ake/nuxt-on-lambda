@@ -1,4 +1,5 @@
-import { spawn as spawnCommand, ChildProcess } from 'child_process';
+import spawnCommand from 'cross-spawn'
+import { ChildProcess } from 'child_process';
 
 type spawn = (command: string, args?: string[]) => Promise<ChildProcess>;
 

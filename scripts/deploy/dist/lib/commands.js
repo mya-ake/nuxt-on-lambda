@@ -1,9 +1,12 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const child_process_1 = require("child_process");
+const cross_spawn_1 = __importDefault(require("cross-spawn"));
 exports.spawn = (command, args = []) => {
     return new Promise((resolve, reject) => {
-        const ps = child_process_1.spawn(command, args, { stdio: 'inherit' });
+        const ps = cross_spawn_1.default(command, args, { stdio: 'inherit' });
         ps.on('close', () => {
             resolve(ps);
         });
