@@ -27,7 +27,7 @@
     "nuxt": "^2.8.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-eslint": "^3.8.0",
+    "@vue/cli-plugin-eslint": "^3.11.0",
     "@vue/cli-service": "^3.8.4",
     "@vue/eslint-config-prettier": "^4.0.1",
     "eslint-plugin-prettier": "^3.0.1",
