@@ -24,7 +24,7 @@
     "aws-serverless-express": "^3.3.5",
     "cross-env": "^6.0.2",
     "express": "^4.16.4",
-    "nuxt": "^2.8.1"
+    "nuxt": "^2.9.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-eslint": "^3.11.0",
