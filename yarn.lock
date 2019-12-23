@@ -9447,10 +9447,10 @@ server-destroy@^1.0.1:
   resolved "https://registry.yarnpkg.com/server-destroy/-/server-destroy-1.0.1.tgz#f13bf928e42b9c3e79383e61cc3998b5d14e6cdd"
   integrity sha1-8Tv5KOQrnD55OD5hzDmYtdFObN0=
 
-serverless@^1.60.1:
-  version "1.60.1"
-  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.60.1.tgz#03ee789ed7d5719b29964b478d0c2e3cc1db2ae1"
-  integrity sha512-uYUS0mM5XQODXKs9u+HlqfP+Cim6OL8nzY395W47xkI0D616K0eXbJojo8pz3lyqDPx4jU+cvG36dwiE8MYORg==
+serverless@^1.60.3:
+  version "1.60.3"
+  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.60.3.tgz#6c9939b1035ddc68b48d4ce6452f20ea3347c393"
+  integrity sha512-YzhApmU443fJtQE1KvNwuGL8Qkuh05sMEP7rBe9Xb6bQmex1MhUP7gsJeBQuh5zItSY3kEiDsLwa7V9VdojX6A==
   dependencies:
     "@serverless/cli" "^1.4.0"
     "@serverless/enterprise-plugin" "^3.2.5"
