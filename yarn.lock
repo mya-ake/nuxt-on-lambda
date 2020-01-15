@@ -1962,10 +1962,10 @@ autoprefixer@^9.6.1, autoprefixer@^9.7.2:
     postcss "^7.0.23"
     postcss-value-parser "^4.0.2"
 
-aws-sdk@^2.601.0:
-  version "2.602.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.602.0.tgz#5dd73e399090464ff213643055fe1dfa56d115b9"
-  integrity sha512-qJVUfYDTe+/htIk8nYHz+1WjfPjg4612o59s8QM3tzdQ711/J7XU+uot6e1g123BZmoz9OG5i3jTG3Q/6Uthfg==
+aws-sdk@^2.602.0:
+  version "2.603.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.603.0.tgz#0920756d2666f4fcfa7233841ef35cd04da81348"
+  integrity sha512-+VlskUDLZLQDDlaVa0Tb02aEFEWcKkTfTew1SGYwce9hUrKcR33IX4e9kM6MyI7UeLQAl0v8dagTniP67UrTQw==
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -9630,16 +9630,16 @@ server-destroy@^1.0.1:
   resolved "https://registry.yarnpkg.com/server-destroy/-/server-destroy-1.0.1.tgz#f13bf928e42b9c3e79383e61cc3998b5d14e6cdd"
   integrity sha1-8Tv5KOQrnD55OD5hzDmYtdFObN0=
 
-serverless@^1.61.0:
-  version "1.61.0"
-  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.61.0.tgz#680dfca0dbec8ca73927c10045a832f52ee0f270"
-  integrity sha512-e3zDtJ6kK9m2X7NOvoyiDMgxPc3wA5TRgV9Zgmc0p3sXA4y/aaC0M4F6uWk8szllyoGCLYaxKhEo77yV4e/hfg==
+serverless@^1.61.1:
+  version "1.61.1"
+  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.61.1.tgz#c0a405ea58f9470887342ce023384d325f26d339"
+  integrity sha512-UhhzIeOxwabOFZGBipUfqgpjzMNdutLi+fFvH6lisa53OZI3fLw3fWnoJpUwCYtwN1nQVwyDM43wBl0MvVH0OQ==
   dependencies:
     "@serverless/cli" "^1.4.0"
     "@serverless/enterprise-plugin" "^3.2.7"
     archiver "^1.3.0"
     async "^1.5.2"
-    aws-sdk "^2.601.0"
+    aws-sdk "^2.602.0"
     bluebird "^3.7.2"
     boxen "^3.2.0"
     cachedir "^2.3.0"
