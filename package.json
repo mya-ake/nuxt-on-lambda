@@ -29,7 +29,7 @@
   "devDependencies": {
     "@vue/cli-plugin-eslint": "^3.12.1",
     "@vue/cli-service": "^4.2.2",
-    "@vue/eslint-config-prettier": "^4.0.1",
+    "@vue/eslint-config-prettier": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.2",
     "nodemon": "^2.0.2",
     "npm-run-all": "^4.1.3",
