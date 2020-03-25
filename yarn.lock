@@ -1983,10 +1983,10 @@ aws-sdk@^2.620.0:
     uuid "3.3.2"
     xml2js "0.4.19"
 
-aws-serverless-express@^3.3.5:
-  version "3.3.6"
-  resolved "https://registry.yarnpkg.com/aws-serverless-express/-/aws-serverless-express-3.3.6.tgz#5fb35c23af3d6e18a6bebdb4397d20dfdcc0a828"
-  integrity sha512-VTn8YQpPpMAEdMeGjyaSygy7Rc0057C9MUjeZION0NBqmwTyphpu9Tc5DCHRNF4qNFQ9x1xcOte6OXKzJvvDhw==
+aws-serverless-express@^3.3.7:
+  version "3.3.7"
+  resolved "https://registry.yarnpkg.com/aws-serverless-express/-/aws-serverless-express-3.3.7.tgz#0f6434e472f8f21ee8b45ea0f592f2639b36cc75"
+  integrity sha512-mb+dlYF6Edv6l7o3W+uZg9sxxYIeI9q9H89RRN/sQTVUEOw8Ih2tZrWNMrY9zd+26OmNo5AuRlnYsswyGYD3Gg==
   dependencies:
     binary-case "^1.0.0"
     type-is "^1.6.16"
