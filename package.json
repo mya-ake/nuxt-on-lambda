@@ -22,7 +22,7 @@
   "dependencies": {
     "@nuxtjs/dotenv": "^1.4.1",
     "aws-serverless-express": "^3.3.7",
-    "cross-env": "^7.0.0",
+    "cross-env": "^7.0.2",
     "express": "^4.16.4",
     "nuxt": "^2.10.2"
   },
