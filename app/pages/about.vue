@@ -3,7 +3,9 @@
     <div>
       <h1>About Page</h1>
       <div class="links">
-        <nuxt-link to="/">Home</nuxt-link>
+        <nuxt-link to="/">
+          Home
+        </nuxt-link>
       </div>
     </div>
   </section>

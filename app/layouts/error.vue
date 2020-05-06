@@ -2,7 +2,9 @@
   <div>
     <template v-if="isModeGenerateErrorPage">
       <h1>{{ statusCode }} Error Page</h1>
-      <nuxt-link to="/">to Top</nuxt-link>
+      <nuxt-link to="/">
+        to Top
+      </nuxt-link>
     </template>
     <template v-else>
       <h1>Default Error Page</h1>
