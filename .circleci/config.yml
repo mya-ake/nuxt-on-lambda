@@ -37,11 +37,11 @@ jobs:
       - restore_scripts_modules
       - run:
           name: Install app modules
-          command: yarn
+          command: yarn install --frozen-lockfile
       - run:
           name: Install scripts modules
           working_directory: ~/workspace/scripts/deploy
-          command: yarn
+          command: yarn install --frozen-lockfile
       - save_app_modules
       - save_scripts_modules
   lint:
