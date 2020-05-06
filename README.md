@@ -3,9 +3,9 @@
 ## Versions
 
 - Nuxt.js: 2.10.1
-- Node.js: 10.16.3
-- Lambda runtime: Node.js 10.x 
-  - 10.16.3(as of 2019-10-15)
+- Node.js: 12.16.2
+- Lambda runtime: Node.js 12.x 
+  - 12.16.2(as of 2020-05-06)
 
 ## Commands
 
