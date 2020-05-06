@@ -2,13 +2,19 @@
   <section class="container">
     <div>
       <logo />
-      <h1 class="title">Nuxt.js on AWS Lambda</h1>
-      <h2 class="subtitle">Nuxt.js project</h2>
+      <h1 class="title">
+        Nuxt.js on AWS Lambda
+      </h1>
+      <h2 class="subtitle">
+        Nuxt.js project
+      </h2>
       <p>Nuxt.js version: {{ nuxtVersion }}</p>
       <p>Build Node.js version: {{ buildNodeVersion }}</p>
       <p>Server Node.js version: {{ serverNodeVersion }}</p>
       <div class="links">
-        <nuxt-link to="/about">About</nuxt-link>
+        <nuxt-link to="/about">
+          About
+        </nuxt-link>
       </div>
     </div>
   </section>
