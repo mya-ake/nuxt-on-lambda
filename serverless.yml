@@ -5,7 +5,7 @@ frameworkVersion: ">=1.27.0"
 
 provider:
   name: aws
-  runtime: nodejs10.x
+  runtime: nodejs12.x
   region: ap-northeast-1
   stage: ${self:custom.STAGE}
 
