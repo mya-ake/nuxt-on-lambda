@@ -1,0 +1,61 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "20:00"
+  open-pull-requests-limit: 12
+  reviewers:
+  - mya-ake
+  assignees:
+  - mya-ake
+  ignore:
+  - dependency-name: serverless
+    versions:
+    - 2.21.1
+    - 2.22.0
+    - 2.23.0
+    - 2.25.0
+    - 2.25.1
+    - 2.25.2
+    - 2.26.0
+    - 2.27.1
+    - 2.28.0
+    - 2.28.1
+    - 2.28.6
+    - 2.28.7
+    - 2.29.0
+    - 2.30.2
+    - 2.30.3
+    - 2.31.0
+    - 2.32.0
+    - 2.32.1
+    - 2.33.0
+    - 2.33.1
+    - 2.34.0
+    - 2.35.0
+    - 2.37.1
+    - 2.37.2
+  - dependency-name: nuxt
+    versions:
+    - 2.14.12
+    - 2.15.0
+    - 2.15.1
+    - 2.15.2
+    - 2.15.3
+  - dependency-name: "@vue/cli-plugin-eslint"
+    versions:
+    - 4.5.11
+  - dependency-name: "@vue/cli-service"
+    versions:
+    - 4.5.11
+  - dependency-name: eslint-plugin-prettier
+    versions:
+    - 3.3.1
+  - dependency-name: lodash
+    versions:
+    - 4.17.20
+  - dependency-name: elliptic
+    versions:
+    - 6.5.3
