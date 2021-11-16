@@ -22,7 +22,7 @@
     "typescript": "^3.5.2"
   },
   "dependencies": {
-    "aws-sdk": "^2.480.0",
+    "aws-sdk": "^2.814.0",
     "consola": "^2.9.0",
     "dayjs": "^1.8.14",
     "minimatch": "^3.0.4"
